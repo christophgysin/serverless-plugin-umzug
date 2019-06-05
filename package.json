@@ -1,0 +1,20 @@
+{
+  "name": "serverless-plugin-umzug",
+  "version": "1.0.0",
+  "description": "Run DynamoDB migrations using umzug",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/christophgysin/serverless-plugin-umzug.git"
+  },
+  "author": {
+    "name": "Christoph Gysin",
+    "email": "christoph.gysin@gmail.com"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "aws-sdk": "^2.468.0",
+    "umzug-cli": "^2.0.0",
+    "umzug-dynamodb-storage": "^1.0.2"
+  }
+}
