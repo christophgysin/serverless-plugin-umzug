@@ -15,6 +15,6 @@
   "dependencies": {
     "aws-sdk": "^2.468.0",
     "umzug-cli": "^2.0.0",
-    "umzug-dynamodb-storage": "git://github.com/christophgysin/node-umzug-dynamodb-storage/#tablename-case-sensitive"
+    "umzug-dynamodb-storage": "^1.0.3"
   }
 }
