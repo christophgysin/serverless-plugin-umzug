@@ -12,7 +12,7 @@ Enable the plugin:
 
 ```yml
 plugins:
- - serverless-plugin-additional-stacks
+ - serverless-plugin-umzug
 ```
 
 By default, the plugin will create a DynamoDB table called `migrations`. This
