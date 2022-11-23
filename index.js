@@ -43,20 +43,34 @@ class ServerlessUmzug {
     };
 
     this.hooks = {
-      'migrations:run': () => this.umzug.cli([]),
-      'migrations:pending:run': () => this.umzug.cli(['pending']),
-      'migrations:up:run': () => this.umzug.cli(['up']),
-      'migrations:down:run': () => this.umzug.cli(['down']),
-      'migrations:history:run': () => this.umzug.cli(['history']),
+      'migrations:run': () => this.umzug([]),
+      'migrations:pending:run': () => this.umzug(['pending']),
+      'migrations:up:run': () => this.umzug(['up']),
+      'migrations:down:run': () => this.umzug(['down']),
+      'migrations:history:run': () => this.umzug(['history']),
     };
 
-    this.umzug = UmzugCli({
+  }
+
+  umzug(args) {
+    const region = this.config.region || this.serverless.service.provider.region;
+    const cli = UmzugCli({
       storage: 'umzug-dynamodb-storage',
       storageOptions: {
-        dynamodb: new AWS.DynamoDB('2012-08-10'),
+        dynamodb: new AWS.DynamoDB({
+          apiVersion: '2012-08-10',
+          region,
+        }),
         table: this.config.tablename || 'migrations',
       },
+      migrations: {
+        params: [
+          this.serverless.service,
+        ],
+      },
     });
+
+    return cli.cli(args);
   }
 }
 
